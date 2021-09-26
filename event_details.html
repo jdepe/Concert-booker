@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <!-- MY CSS -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Concert Booker - Event Details</title>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid" id="navbarContainer">
+        <a class="navbar-brand" href="index.html">
+          <h3><i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                class="bi bi-music-note-list" viewBox="0 0 16 16">
+                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                <path fill-rule="evenodd"
+                  d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+              </svg>
+              Concert Booking</i></h3>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <h3>Home</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="event_create.html">
+                <h3>Create Event</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="user_history.html">
+                <h3>Booking History</h3>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- TOP IMAGE -->
+    <div class="container-fluid">
+      <div class="carousel">
+        <div class="img-gradient">
+          <img src="img/featured.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-caption">
+          <h1>BLISS N ESO - THE SUN TOUR</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container" id="padded-container">
+      <div class="shadow p-3 mb-5 bg-body rounded">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="give-me-space">
+              <div class="card">
+                <div class="card-header">
+                  <h4>DATES AND LOCATIONS</h4>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="2">Australia</th>
+                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                          data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                          &#9660;</button></th>
+                    </tr>
+                  </thead>
+                  <tbody class="collapse show" id="collapse1">
+                    <tr>
+                      <td>Jan 21, 2022</td>
+                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Jan 23, 2022</td>
+                      <td>NightQuarter - Helensvale, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Jan 26, 2022</td>
+                      <td>Harrup Park - South Mackay, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="2">New Zealand</th>
+                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                          data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                          &#9660;</button></th>
+                    </tr>
+                  </thead>
+                  <tbody class="collapse show" id="collapse2">
+                    <tr>
+                      <td>Jan 30, 2022</td>
+                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Feb 4, 2022</td>
+                      <td>NightQuarter - Helensvale, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Feb 10, 2022</td>
+                      <td>Harrup Park - South Mackay, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="2">Brazil</th>
+                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                          data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                          &#9660;</button></th>
+                    </tr>
+                  </thead>
+                  <tbody class="collapse show" id="collapse3">
+                    <tr>
+                      <td>Feb 17, 2022</td>
+                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Feb 25, 2022</td>
+                      <td>NightQuarter - Helensvale, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                    <tr>
+                      <td>Mar 7, 2022</td>
+                      <td>Harrup Park - South Mackay, QLD</td>
+                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
+                    </tr>
+                  </tbody>
+                  <thead>
+
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="give-me-space">
+              <img src="https://www.abc.net.au/cm/rimage/12583540-16x9-large.jpg?v=3" class="img-fluid">
+            </div>
+            <div class="give-me-space">
+              <img src="https://www.abc.net.au/cm/rimage/12583540-16x9-large.jpg?v=3" class="img-fluid">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>OTHER INFORMATION</h4>
+              </div>
+              <p><strong>Pricing:</strong> $84pp</p>
+              <p><strong>Status:</strong> Upcoming</p>
+              <div class="card-header">
+                <h4>ABOUT EVENT</h4>
+              </div>
+              <h6><strong>One of the country’s finest hip hop acts, Bliss n Eso are excited to announce a 29-date
+                  metro
+                  and regional Australian tour.</strong></h6>
+              <p>In what is a truly national tour, the three-time ARIA-award winning group will take their electric
+                energy and unmatchable flow to audiences in every Australian state and territory throughout January to
+                April 2022.</p>
+
+              <p>Due to commence in September but unfortunately with current COVID-19 restrictions and border closures
+                across Australia, the 2021 ‘Send It Tour’ will be cancelled and all tickets transferred across to the
+                2022 ‘The Sun Tour’ dates. Ticket holders will be contacted directly by ticketing agencies and fans
+                are
+                urged to #keepyourtickets.</p>
+
+              <p>The group will be touring in support of their polychromatic seventh studio album The Sun, out
+                tomorrow
+                via Flight Deck/Mushroom. Bliss n Eso have long juxtaposed light and dark, blissful and melancholy,
+                and
+                strong and vulnerable. Nonetheless, The Sun finds hope in somber experiences, heightening the album’s
+                sense of release. As a group that has grown up through their music over many years, The Sun initiates
+                a
+                new cycle and provides solace in this age of disquiet, thematising contemplation, healing and
+                fortitude.
+              </p>
+
+              <p>Renowned for their captivating live performances and boisterous energy – don't miss out on tickets to
+                see Australia’s finest, Bliss n Eso perform nationally for the first time in over four years, next
+                January - April 2022.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMMENT SECTION -->
+        <div class="row">
+          <div class="give-me-space">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>SEE WHAT OTHERS ARE SAYING...</h4>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <div class="col-12">
+                    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                      <div class="card-body p-4">
+                        <div class="form-outline mb-4">
+                          <div class="row">
+                            <div class="col-8 col-md-10">
+                              <input type="text" class="form-control" placeholder="Type comment..." />
+                            </div>
+                            <div class="col-2 col-md-1">
+                              <button type="button" class="btn btn-secondary">Post</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mb-4">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-3 col-md-2">
+                                <img src="img/userImg.png" width="50" height="50" />
+                                <p><strong>USER1</strong></p>
+                              </div>
+                              <div class="col-7 col-md-10">
+                                <p>This is my comment</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mb-4">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-3 col-md-2">
+                                <img src="img/userImg.png" width="50" height="50" />
+                                <p><strong>USER2</strong></p>
+                              </div>
+                              <div class="col-7 col-md-10">
+                                <p>This is my reply</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a class="btn btn-secondary" href="#top" role="button" id="backtotop">Back to top</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING OFFCANVAS -->
+    <div class="offcanvas offcanvas-end" id="bookingOffCanvas" data-bs-scroll="true">
+      <div class="offcanvas-header">
+        <h2 id="bookingCanvasHeaderLabel">Book Tickets</h2>
+      </div>
+      <div class="offcanvas-body">
+
+        <form>
+          <div class="row">
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInputGrid">
+              <label for="floatingInputGrid">Email address</label>
+              <div class="form-text">Your receipt will be sent to this address.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-floating">
+              <select class="form-select">
+                <option selected>Please select number of tickets</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <div class="form-text">Max 10 tickets per booking.</div>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">Cancel</button>
+          </div>
+
+          <div class="col">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+              data-bs-target="#bookingOffCanvas" data-bs-target=>Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="py-4 bg-dark flex-shrink-0">
+    <div class="container text-center">
+      <a href="index.html" class="text-muted">ConcertBooking.com</a>
+      <p class="text-muted">&copy; 2021 Concert Booking.</p>
+    </div>
+  </footer>
+
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
