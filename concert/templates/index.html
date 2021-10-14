@@ -1,84 +1,34 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <!-- MY CSS -->
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>Concert Booker</title>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid" id="navbarContainer">
-        <a class="navbar-brand" href="index.html">
-          <h3><i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                class="bi bi-music-note-list" viewBox="0 0 16 16">
-                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
-                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
-                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
-                <path fill-rule="evenodd"
-                  d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
-              </svg>
-              Concert Booking</i></h3>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">
-                <h3>Home</h3>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="event_create.html">
-                <h3>Create Event</h3>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="user_history.html">
-                <h3>Booking History</h3>
-              </a>
-            </li>
-          </ul>
+{% block header %}
+  <!-- TOP IMAGE -->
+  <div class="container-fluid">
+    <div class="class=" carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="img-gradient">
+          <img src="static\image\featured.jpg" class="w-100">
         </div>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <!-- TOP IMAGE -->
-    <div class="container-fluid">
-      <div class="class=" carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="img-gradient">
-            <img src="img/featured.jpg" class="w-100">
-          </div>
-          <div class="carousel-caption" id="carousel-main">
-            <div class="col-6 align-self-start">
-              <h6>UPCOMING</h6>
-              <h1>BLISS N ESO</h1>
-              <div class="d-none d-lg-block">
-                <p class="lead">One of the country’s finest hip hop acts, Bliss n Eso are
-                  excited to announce a 29-date
-                  metro
-                  and regional Australian tour.</p>
-              </div>
-              <a class="btn btn-primary" href="event_details.html" role="button">Find Tickets</a>
+        <div class="carousel-caption" id="carousel-main">
+          <div class="col-6 align-self-start">
+            <h6>UPCOMING</h6>
+            <h1>BLISS N ESO</h1>
+            <div class="d-none d-lg-block">
+              <p class="lead">One of the country’s finest hip hop acts, Bliss n Eso are
+                excited to announce a 29-date
+                metro
+                and regional Australian tour.</p>
             </div>
+            <a class="btn btn-primary" href="event_details.html" role="button">Find Tickets</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <main>
+   
     <!-- EVENT MODAL -->
     <div class="modal fade" id="cardmodal" tabindex="-1" aria-labelledby="concertCardLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 1000px">
@@ -134,7 +84,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -145,7 +95,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -156,7 +106,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -167,7 +117,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -178,7 +128,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -189,7 +139,7 @@
           <div class="col">
             <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
               data-bs-target="#cardmodal">
-              <img src="img/music_placeholder.png" class="card-img-fluid">
+              <img src="static\image\music_placeholder.png" class="card-img-fluid">
               <div class="card-footer">
                 <small class="text-muted">Upcoming</small>
                 <h5 class="card-title">Upcoming Event</h5>
@@ -233,7 +183,7 @@
                 <div class="col">
                   <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
                     data-bs-target="#cardmodal">
-                    <img src="img/card.jpg" class="card-img">
+                    <img src="static\image\card.jpg" class="card-img">
                     <div class="card-img-overlay">
                       <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
                       <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
@@ -250,7 +200,7 @@
                 <div class="col">
                   <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
                     data-bs-target="#cardmodal">
-                    <img src="img/card.jpg" class="card-img" alt="...">
+                    <img src="static\image\card.jpg" class="card-img" alt="...">
                     <div class="card-img-overlay">
                       <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
                       <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
@@ -270,7 +220,7 @@
                 <div class="col">
                   <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
                     data-bs-target="#cardmodal">
-                    <img src="img/card.jpg" class="card-img">
+                    <img src="static\image\card.jpg" class="card-img">
                     <div class="card-img-overlay">
                       <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
                       <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
@@ -287,7 +237,7 @@
                 <div class="col">
                   <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
                     data-bs-target="#cardmodal">
-                    <img src="img/card.jpg" class="card-img">
+                    <img src="static\image\card.jpg" class="card-img">
                     <div class="card-img-overlay">
                       <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
                       <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
@@ -307,21 +257,4 @@
       </div>
     </div>
   </main>
-  <footer class="py-4 bg-dark flex-shrink-0">
-    <div class="container text-center">
-      <a href="index.html" class="text-muted">ConcertBooking.com</a>
-      <p class="text-muted">&copy; 2021 Concert Booking.</p>
-    </div>
-  </footer>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-  </script>
-
-</body>
-
-</html>
+{% endblock %}

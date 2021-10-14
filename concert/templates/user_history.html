@@ -1,3 +1,4 @@
+<<<<<<< HEAD:user_history.html
 <!doctype html>
 <html lang="en">
 
@@ -58,7 +59,11 @@
     </nav>
   </header>
 
+=======
+{% extends 'base.html' %}
+>>>>>>> 41a16bd843897d85043ab013ed13d8b91fd7bcfe:concert/templates/user_history.html
 
+{% block content %}
   <main>
     <div class="sticky-top">
       <div class="container">
@@ -473,18 +478,4 @@
 
   </main>
 
-  <footer class="py-4 bg-dark flex-shrink-0">
-    <div class="container text-center">
-      <a href="index.html" class="text-muted">ConcertBooking.com</a>
-      <p class="text-muted">&copy; 2021 Concert Booking.</p>
-    </div>
-  </footer>
-
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+{% endblock %}
