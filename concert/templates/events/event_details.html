@@ -7,10 +7,10 @@
     <div class="container-fluid">
       <div class="carousel">
         <div class="img-gradient">
-          <img src="image\featured.jpg" class="d-block w-100">
+          <img src="{{event.image}}" class="d-block w-100">
         </div>
         <div class="carousel-caption">
-          <h1>BLISS N ESO - THE SUN TOUR</h1>
+          <h1>{{event.name}}</h1>
         </div>
       </div>
     </div>
@@ -142,9 +142,7 @@
               <div class="card-header">
                 <h4>ABOUT EVENT</h4>
               </div>
-              <h6><strong>One of the country’s finest hip hop acts, Bliss n Eso are excited to announce a 29-date
-                  metro
-                  and regional Australian tour.</strong></h6>
+              <h6><strong>{{event.description}}</strong></h6>
               <p>In what is a truly national tour, the three-time ARIA-award winning group will take their electric
                 energy and unmatchable flow to audiences in every Australian state and territory throughout January to
                 April 2022.</p>
@@ -195,32 +193,21 @@
                             </div>
                           </div>
                         </div>
+                        {% for comment in event.comments %}
                         <div class="card mb-4">
                           <div class="card-body">
                             <div class="row">
                               <div class="col-3 col-md-2">
                                 <img src="img/userImg.png" width="50" height="50" />
-                                <p><strong>USER1</strong></p>
+                                <p><strong>{{comment.user}}</strong></p>
                               </div>
                               <div class="col-7 col-md-10">
-                                <p>This is my comment</p>
+                                <p>{{comment.text}}</p>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="card mb-4">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-3 col-md-2">
-                                <img src="img/userImg.png" width="50" height="50" />
-                                <p><strong>USER2</strong></p>
-                              </div>
-                              <div class="col-7 col-md-10">
-                                <p>This is my reply</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>
