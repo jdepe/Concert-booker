@@ -1,0 +1,1 @@
+web: gunicorn -w 2 'concert:create_app()'
