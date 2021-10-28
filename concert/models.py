@@ -19,26 +19,20 @@ class User(db.Model, UserMixin):
 class Event(db.Model):
     __tablename__='event'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    name = db.Column(db.String(80), )
     description = db.Column(db.String(200))
     date = db.Column(db.Date)
     time = db.Column(db.Time)
     location = db.Column(db.String(400))
     image = db.Column(db.String(400))
-    price = db.Column(db.String(4))
+    price = db.Column(db.Integer)
     num_tickets = db.Column(db.Integer)
+    genre = db.Column(db.String(80))
+    status = db.Column(db.String(80))
 
     # Create the Comment db.relationship
 	# relation to call event.comment and comment.event
     comments = db.relationship('Comment', backref='event')
-
-    # Create the Status db.relationship 
-    # relation to call event.status and status.event
-    status = db.relationship('Status', backref='event')
-    
-    # Create the Genre db.relationship
-    # relation to call event.genre genre.event
-    genre = db.relationship('Genre', backref='event')
 
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
@@ -63,29 +57,9 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     qty = db.Column(db.Integer)
     date = db.Column(db.DateTime)
-
-    # Add the foreign key to for event.price
-    price = db.Column(db.String(4), db.ForeignKey('event.price'))
+    price = db.Column(db.Integer)
 
 
-class Genre(db.Model):
-    __tablename__='genre'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(25))
-    description = db.Column(db.String(200))
-
-    # Add the foreign key for event.id
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
-
-
-class Status(db.Model):
-    __tablename__='status'
-    id = db.Column(db.Integer, primary_key=True)
-    status = db.Column(db.String(25))
-    tickets_remaining = db.Column(db.Integer)
-
-    # Add the foreign key for event.id and event.num_tickets
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
-    num_tickets = db.Column(db.Integer, db.ForeignKey('event.num_tickets'))
+   
 
     

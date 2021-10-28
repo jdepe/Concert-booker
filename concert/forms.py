@@ -12,7 +12,7 @@ class EventForm(FlaskForm):
   #description meets the length requirements
   description = TextAreaField('Description', validators=[InputRequired(), Length(max=500, message="Maximum characters reached (500)")])
   image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
-  currency = StringField('Price', validators=[InputRequired()])
+  price = StringField('Price', validators=[InputRequired()])
   submit = SubmitField("Create")
 
 #User login
