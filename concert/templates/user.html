@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container">
+  <h3>{{heading}}</h3>
+  <div class="card p-5">
+    {{wtf.quick_form(form)}}
+  </div>
+  {% if heading|lower =='login' %}
+  <div class="col-md-4 mb-5 ml-5">
+     <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a></p>
+  </div>
+  </div> 
+  {% endif %}
+</div>
+{% endblock %}
