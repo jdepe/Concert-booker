@@ -1,9 +1,14 @@
 from sqlalchemy.orm import backref
 from . import db
+<<<<<<< HEAD
+from datetime import datetime
+from flask_login import UserMixin
+=======
 from datetime import datetime, date, time
 
+>>>>>>> 0637b6943281d2af2a170c48d5c74c9aea8e0a81
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__='user'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
