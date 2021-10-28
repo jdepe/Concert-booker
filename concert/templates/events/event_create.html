@@ -1,212 +1,150 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <!-- MY CSS -->
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>Concert Booker - Create Event</title>
-</head>
+{% block head %}
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid" id="navbarContainer">
-        <a class="navbar-brand" href="index.html">
-          <h3><i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                class="bi bi-music-note-list" viewBox="0 0 16 16">
-                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
-                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
-                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
-                <path fill-rule="evenodd"
-                  d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
-              </svg>
-              Concert Booking</i></h3>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <h3>Home</h3>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="event_create.html">
-                <h3>Create Event</h3>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="user_history.html">
-                <h3>Booking History</h3>
-              </a>
-            </li>
-          </ul>
+<title>Concert Booker - Create Event</title>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <div class="container">
+      <div class="d-flex justify-content-center" id="page-header">
+        <h1>Create an Event</h1>
+      </div>
+    </div>
+
+
+  <div class="container" id="padded-container">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+      <form>
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="nameInput" class="col-form-label">EVENT NAME</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="text" id="nameInput" class="form-control" placeholder="Enter an event name...">
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <div class="sticky-top">
-      <div class="container">
-        <div class="d-flex justify-content-center" id="page-header">
-          <h1>Create an Event</h1>
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="genreSelect" class="col-form-label">GENRE</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <select id="genreSelect" class="form-control">
+              <option selected disabled>Select a genre...</option>
+              <option>Rock</option>
+              <option>Pop</option>
+              <option>Hip Hop</option>
+              <option>Jazz</option>
+              <option>Country</option>
+              <option>Heavy Metal</option>
+              <option>EDM</option>
+              <option>R&B</option>
+            </select>
+          </div>
         </div>
-      </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="dateInput" class="col-form-label">DATE</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="date" id="dateInput" class="form-control">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="timeInput" class="col-form-label">TIME</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="time" id="timeInput" class="form-control">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="locationInput" class="col-form-label">LOCATION</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="text" id="locationInput" class="form-control" placeholder="Enter a location...">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="priceInput" class="col-form-label">PRICE $</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="number" id="priceInput" class="form-control" placeholder="Enter a price..." min="0"
+              max="500">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="ticketInput" class="col-form-label">TICKETS AVALIABLE</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <input type="number" id="ticketInput" class="form-control" placeholder="Enter number of tickets" min="0"
+              max="99999">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="descriptionInput" class="col-form-label">EVENT DESCRIPTION</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <textarea type="text" id="descriptionInput" class="form-control"
+              placeholder="Enter a description for the event" rows="5"></textarea>
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-3 col-md-2">
+            <label for="statusSelect" class="col-form-label">STATUS</label>
+          </div>
+          <div class="col-9 col-md-10">
+            <select id="statusSelect" class="form-control">
+              <option selected disabled>Select a status...</option>
+              <option>Upcoming</option>
+              <option>Inactive</option>
+              <option>Booked</option>
+              <option>Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-12 col-lg-4">
+            <label for="headImg" class="col-form-label">SELECT A FEATURE IMAGE</label>
+          </div>
+          <div class="col-12 col-lg-8">
+            <input type="file" id="headImg" class="form-control">
+          </div>
+        </div>
+
+        <div class="row" id="eventForm">
+          <div class="col-12 col-lg-4">
+            <label for="extraImg" class="col-form-label">SELECT SMALLER IMAGE/S FOR EVENT BODY</label>
+          </div>
+          <div class="col-12 col-lg-8">
+            <input type="file" id="extraImg" class="form-control" multiple>
+          </div>
+        </div>
     </div>
 
-    <div class="container" id="padded-container">
-      <div class="shadow p-3 mb-5 bg-body rounded">
-        <form>
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="nameInput" class="col-form-label">EVENT NAME</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="text" id="nameInput" class="form-control" placeholder="Enter an event name...">
-            </div>
-          </div>
 
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="genreSelect" class="col-form-label">GENRE</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <select id="genreSelect" class="form-control">
-                <option selected disabled>Select a genre...</option>
-                <option>Rock</option>
-                <option>Pop</option>
-                <option>Hip Hop</option>
-                <option>Jazz</option>
-                <option>Country</option>
-                <option>Heavy Metal</option>
-                <option>EDM</option>
-                <option>R&B</option>
-              </select>
-            </div>
-          </div>
+    </form>
 
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="dateInput" class="col-form-label">DATE</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="date" id="dateInput" class="form-control">
-            </div>
-          </div>
+  </div>
+  </div>
 
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="timeInput" class="col-form-label">TIME</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="time" id="timeInput" class="form-control">
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="locationInput" class="col-form-label">LOCATION</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="text" id="locationInput" class="form-control" placeholder="Enter a location...">
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="priceInput" class="col-form-label">PRICE $</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="number" id="priceInput" class="form-control" placeholder="Enter a price..." min="0"
-                max="500">
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="ticketInput" class="col-form-label">TICKETS AVALIABLE</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <input type="number" id="ticketInput" class="form-control" placeholder="Enter number of tickets" min="0"
-                max="99999">
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="descriptionInput" class="col-form-label">EVENT DESCRIPTION</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <textarea type="text" id="descriptionInput" class="form-control"
-                placeholder="Enter a description for the event" rows="5"></textarea>
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-3 col-md-2">
-              <label for="statusSelect" class="col-form-label">STATUS</label>
-            </div>
-            <div class="col-9 col-md-10">
-              <select id="statusSelect" class="form-control">
-                <option selected disabled>Select a status...</option>
-                <option>Upcoming</option>
-                <option>Inactive</option>
-                <option>Booked</option>
-                <option>Cancelled</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-12 col-lg-4">
-              <label for="headImg" class="col-form-label">SELECT A FEATURE IMAGE</label>
-            </div>
-            <div class="col-12 col-lg-8">
-              <input type="file" id="headImg" class="form-control">
-            </div>
-          </div>
-
-          <div class="row" id="eventForm">
-            <div class="col-12 col-lg-4">
-              <label for="extraImg" class="col-form-label">SELECT SMALLER IMAGE/S FOR EVENT BODY</label>
-            </div>
-            <div class="col-12 col-lg-8">
-              <input type="file" id="extraImg" class="form-control" multiple>
-            </div>
-          </div>
-      </div>
-
-
-      </form>
-
-    </div>
-    </div>
-
-  </main>
-
-  <footer class="py-4 bg-dark flex-shrink-0">
-    <div class="container text-center">
-      <a href="index.html" class="text-muted">ConcertBooking.com</a>
-      <p class="text-muted">&copy; 2021 Concert Booking.</p>
-    </div>
-  </footer>
-
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+</main>
+{% endblock %}
