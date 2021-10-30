@@ -20,7 +20,7 @@ class Event(db.Model):
     __tablename__='event'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), )
-    description = db.Column(db.String(200))
+    description = db.Column(db.String(500))
     date = db.Column(db.Date)
     time = db.Column(db.Time)
     location = db.Column(db.String(400))

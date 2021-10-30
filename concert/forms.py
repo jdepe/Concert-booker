@@ -1,18 +1,27 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField
+from wtforms.fields.core import DateField, TimeField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
+
 
 # allowed files
 ALLOWED_FILES = {'PNG','JPG','png','jpg','JPEG','jpeg'}
 
+# The event creation form
 class EventForm(FlaskForm):
   name = StringField('Event Name', validators=[InputRequired()])
   # adding two validators, one to ensure input is entered and other to check if the 
   #description meets the length requirements
   description = TextAreaField('Description', validators=[InputRequired(), Length(max=500, message="Maximum characters reached (500)")])
-  image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
   price = StringField('Price', validators=[InputRequired()])
+  date = DateField('Event Date', validators=[InputRequired()], format='%Y-%m-%d')
+  time = TimeField('Event Start Time', validators=[InputRequired()])
+  location = StringField('Event Location', validators=[InputRequired()])
+  num_tickets = StringField('Total tickets', validators=[InputRequired()])
+  genre = StringField('Genre', validators=[InputRequired()])
+  status = StringField('Event Status', validators=[InputRequired()])
+  image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
   submit = SubmitField("Create")
 
 #User login
