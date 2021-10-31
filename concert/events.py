@@ -17,7 +17,7 @@ def show(id):
     return render_template('events/event_details.html', event=event, form=cform)
 
 @bp.route('/create', methods =['GET', 'POST'])
-
+@login_required
 def create():
     print('Method type: ', request.method)
     form = EventForm()
@@ -59,7 +59,7 @@ def check_upload_file(form):
     return db_upload_path
 
 @bp.route('/edit', methods =['GET', 'POST'])
-
+@login_required
 def edit():
     print('Method type: ', request.method)
     form = EventForm()
