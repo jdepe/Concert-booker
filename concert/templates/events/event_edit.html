@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Concert Booker - Edit Event</title>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<main>
+
+    <div class="container">
+      <div class="d-flex justify-content-center" id="page-header">
+        <h1>Edit your Event</h1>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-12">
+  
+          <h1>Edit concert</h1>
+          <p>Edit your event</p>
+  
+          {{wtf.quick_form(form)}}
+          
+        </div>
+      </div>
+    </div>
+
+  
+  
+
+</main>
+{% endblock %}

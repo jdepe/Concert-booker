@@ -2,6 +2,9 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Event, Comment
 from .forms import EventForm, CommentForm
 from . import db
+import os
+from werkzeug.utils import secure_filename
+from flask_login import login_required, current_user
 
 bp = Blueprint('event', __name__, url_prefix='/events')
 
@@ -10,34 +13,89 @@ def show(id):
     event = Event.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()
-    # the template to be rendered
+    # The template to be rendered
     return render_template('events/event_details.html', event=event, form=cform)
 
-@bp.route('/create', methods= ['GET', 'POST'])
+@bp.route('/create', methods =['GET', 'POST'])
+
 def create():
     print('Method type: ', request.method)
     form = EventForm()
     if form.validate_on_submit():
-        event = Event(name=form.data, description=form.description.data, image=form.image.data, price=form.price.data)
-        # add the object to the database session
-        db.session.add(event)
-        # commit to the database
-        db.session.commit()
-        print('Successfully create new event', 'success')
-        # always redirect if the form is valid
-        return redirect(url_for('event.create'))
+            # Call the function that checks and returns image
+            db_file_path=check_upload_file(form)
+            event = Event(name=form.name.data, 
+                    description=form.description.data, 
+                    price=form.price.data, 
+                    date=form.date.data, 
+                    time=form.time.data, 
+                    location=form.location.data,
+                    num_tickets=form.num_tickets.data,
+                    genre=form.genre.data,
+                    status=form.status.data,
+                    image=db_file_path)
+                
+            # Add the object to the database session
+            db.session.add(event)
+            # Commit to the database
+            db.session.commit()
+            print('Successfully created new event')
+            # Always redirect if the form is valid
+            return redirect(url_for('event.create'))
     return render_template('events/event_create.html', form=form)
 
-def get_event():
-    # create an instance of the Event class to test the new classes.
-    bliss_desc = """Bliss 'n' Eso"""
-    img_loc = "static\image\featured.jpg"
+def check_upload_file(form):
+    # Get file data from the form  
+    fp=form.image.data
+    filename=fp.filename
+    # Get the current path of the module file… store image file relative to this path  
+    BASE_PATH=os.path.dirname(__file__)
+    # Upload file location – directory of this file/static/image
+    upload_path=os.path.join(BASE_PATH,'static/image',secure_filename(filename))
+    # Store relative path in DB as image location in HTML is relative
+    db_upload_path='/static/image/' + secure_filename(filename)
+    # Save the file and return the db upload path  
+    fp.save(upload_path)
+    return db_upload_path
 
-    event = Event("Bliss n Eso", bliss_desc, img_loc, "120", "2022-1-1", "20:00", "Brisbane", "Hip-Hop", "Available", "$69")
+@bp.route('/edit', methods =['GET', 'POST'])
 
-    # Create a comment.
-    comment = Comment("Simon", "Aussie hip-hop is the best!", '2021-10-10 12:00')
-    event.set_comments(comment)
-    comment = Comment("Anon", "Washed up", "2021-11-10 12:00")
-    event.set_comments(comment)
-    return event
+def edit():
+    print('Method type: ', request.method)
+    form = EventForm()
+    if form.validate_on_submit():
+            # Call the function that checks and returns image
+            db_file_path=check_upload_file(form)
+            event = Event(name=form.name.data, 
+                    description=form.description.data, 
+                    price=form.price.data, 
+                    date=form.date.data, 
+                    time=form.time.data, 
+                    location=form.location.data,
+                    num_tickets=form.num_tickets.data,
+                    genre=form.genre.data,
+                    status=form.status.data,
+                    image=db_file_path)
+                
+            # Add the object to the database session
+            db.session.add(event)
+            # Commit to the database
+            db.session.commit()
+            print('Successfully edited your event')
+            # Always redirect if the form is valid
+            return redirect(url_for('event.index'))
+    return render_template('events/event_edit.html', form=form)
+
+def check_upload_file(form):
+    # Get file data from the form  
+    fp=form.image.data
+    filename=fp.filename
+    # Get the current path of the module file… store image file relative to this path  
+    BASE_PATH=os.path.dirname(__file__)
+    # Upload file location – directory of this file/static/image
+    upload_path=os.path.join(BASE_PATH,'static/image',secure_filename(filename))
+    # Store relative path in DB as image location in HTML is relative
+    db_upload_path='/static/image/' + secure_filename(filename)
+    # Save the file and return the db upload path  
+    fp.save(upload_path)
+    return db_upload_path

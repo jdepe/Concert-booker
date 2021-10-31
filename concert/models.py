@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
     __tablename__='user'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
-    emailid = db.Column(db.String(100), index=True, nullable=False)
+    email_id = db.Column(db.String(100), index=True, nullable=False)
 	
     # Create the password_hash so that passwords aren't stored directly in the DB.
     password_hash = db.Column(db.String(255), nullable=False)

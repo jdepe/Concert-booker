@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField
-from wtforms.fields.core import DateField, TimeField
-from wtforms.validators import InputRequired, Length, Email, EqualTo
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField
+from wtforms.fields.html5 import DateField, TimeField, EmailField
+from wtforms.validators import InputRequired, Length, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
+
+
 
 
 # allowed files
@@ -16,11 +18,11 @@ class EventForm(FlaskForm):
   description = TextAreaField('Description', validators=[InputRequired(), Length(max=500, message="Maximum characters reached (500)")])
   price = StringField('Price', validators=[InputRequired()])
   date = DateField('Event Date', validators=[InputRequired()], format='%Y-%m-%d')
-  time = TimeField('Event Start Time', validators=[InputRequired()])
+  time = TimeField('Event Start Time', validators=[InputRequired()], format='%H:%M')
   location = StringField('Event Location', validators=[InputRequired()])
   num_tickets = StringField('Total tickets', validators=[InputRequired()])
-  genre = StringField('Genre', validators=[InputRequired()])
-  status = StringField('Event Status', validators=[InputRequired()])
+  genre = SelectField(u'Genre', choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('hip hop', 'Hip Hop')])
+  status = SelectField(u'Event Status', choices=[('upcoming', 'Upcoming'), ('inactive', 'Inactive'), ('booked', 'Booked'), ('cancelled', 'Cancelled')])
   image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
   submit = SubmitField("Create")
 
@@ -33,13 +35,13 @@ class LoginForm(FlaskForm):
 #User register
 class RegisterForm(FlaskForm):
     user_name=StringField("User Name", validators=[InputRequired()])
-    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    email_id = EmailField("Email Address", validators=[InputRequired()])
     
-    #linking two fields - password should be equal to data entered in confirm
+    # Linking password and confirm fields to ensure the data is equal
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
-    #submit button
+    # Submit button
     submit = SubmitField("Register")
     
 class CommentForm(FlaskForm):
