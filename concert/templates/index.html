@@ -88,7 +88,7 @@
 
           {% for event in events %}
           
-            <div class="col">
+          <div class="col-sm d-flex h-100">
               <a class="card text-black" id="smallPopular" href="{{url_for('events.show', id=event.id)}}">
                 <img src="{{event.image}}" class="card-img-fluid">
                 <div class="card-footer">
@@ -97,6 +97,7 @@
                 </div>
               </a>
             </div>
+
           
           {% endfor %}
 

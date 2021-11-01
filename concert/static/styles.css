@@ -93,3 +93,8 @@ body{
   text-align: center;
   text-decoration-color: maroon;
 }
+
+#smallPopular.card{
+  max-height:200px;
+  overflow:hidden;
+}
