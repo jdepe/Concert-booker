@@ -29,6 +29,7 @@
         <div class="row">
 
           <div class="col-lg-6">
+
             <div class="give-me-space">
               <div class="card">
                 <div class="card-header">
@@ -37,18 +38,7 @@
                 <p><strong>Location: </strong>{{event.location}}</p>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-6">
-            <div class="give-me-space">
-              <img src="{{event.image}}" class="img-fluid">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-6">
             <div class="give-me-space">
               <div class="card">
                 <div class="card-header">
@@ -58,23 +48,40 @@
                 <p><strong>Start time: </strong>{{event.time}}</p>
               </div>
             </div>
-          </div>
 
-        <div class="row">
-          <div class="col-12">
+          <div class="give-me-space">
             <div class="card">
               <div class="card-header">
                 <h4>OTHER INFORMATION</h4>
               </div>
               <p><strong>Pricing: $</strong>{{event.price}}</p>
               <p><strong>Status:</strong> {{event.status}}</p>
-              <div class="card-header">
-                <h4>ABOUT EVENT</h4>
-              </div>
-              
-              <p>{{event.description}}</p>
             </div>
           </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="give-me-space">
+              <img src="{{event.image}}" class="img-fluid">
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="row">
+          <div class="give-me-space">
+        <div class="card">
+          <div class="card-header">
+            <h4>ABOUT EVENT</h4>
+          </div>         
+          <p>{{event.description}}</p>
+        </div>
+        </div>
+        </div>
+
+            
+
         </div>
 
         <!-- COMMENT SECTION -->
