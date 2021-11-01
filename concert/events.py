@@ -74,6 +74,14 @@ def edit():
                      
     return render_template('events/event_edit.html', form=form)
 
+@bp.route('/delete/<id>')
+def delete(id):
+    event = Event.query.get(id)
+    db.session.delete(event)
+    db.session.commit()
+    return redirect(url_for('main.myevents'))
+
+
 def check_upload_file(form):
     # Get file data from the form  
     fp=form.image.data

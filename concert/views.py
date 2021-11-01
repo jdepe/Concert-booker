@@ -8,6 +8,11 @@ def index():
     events = Event.query.all()  
     return render_template('index.html', events=events)
 
+@mainbp.route('/my_events')
+def myevents():
+    events = Event.query.all()  
+    return render_template('myevents.html', events=events)
+
 @mainbp.route('/search')
 def search():
     if request.args['search'] is not "":
