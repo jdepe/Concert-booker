@@ -29,6 +29,8 @@
           <p>Edit your event</p>
   
           {{wtf.quick_form(form)}}
+          {% if current_user.id == event.creator_id %}
+          {% endif %}
           
         </div>
       </div>

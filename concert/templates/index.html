@@ -34,7 +34,7 @@
 {% block content %}
   <main>
    
-    <!-- EVENT MODAL -->
+    <!-- EVENT MODAL
     <div class="modal fade" id="cardmodal" tabindex="-1" aria-labelledby="concertCardLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 1000px">
         <div class="modal-content">
@@ -79,78 +79,26 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- POPULAR SECTION -->
     <div class="container">
       <div class="shadow p-3 mb-5 bg-body rounded">
         <h1 class="sectionTitle"><u class="sectionTitle">Popular Concerts</u></h1>
         <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 align-items-center">
 
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
-
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
-
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
-
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
-
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
-
-          <div class="col">
-            <a class="card text-black" id="smallPopular" href="#cardmodal" data-bs-toggle="modal"
-              data-bs-target="#cardmodal">
-              <img src="static\image\music_placeholder.png" class="card-img-fluid">
-              <div class="card-footer">
-                <small class="text-muted">Upcoming</small>
-                <h5 class="card-title">Upcoming Event</h5>
-              </div>
-            </a>
-          </div>
+          {% for event in events %}
+          
+            <div class="col">
+              <a class="card text-black" id="smallPopular" href="{{url_for('events.show', id=event.id)}}">
+                <img src="{{event.image}}" class="card-img-fluid">
+                <div class="card-footer">
+                  <small class="text-muted">{{event.status}}</small>
+                  <h5 class="card-title">{{event.name}}</h5>
+                </div>
+              </a>
+            </div>
+          
+          {% endfor %}
 
 
         </div>
