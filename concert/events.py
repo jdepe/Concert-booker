@@ -16,10 +16,6 @@ def show(id):
     # The template to be rendered
     return render_template('events/event_details.html', event=event, form=cform)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f3941695b26b3ddd51eccc01b5e659713a0f190c
 @bp.route('/create', methods =['GET', 'POST'])
 @login_required
 def create():
