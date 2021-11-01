@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% import "bootstrap/wtf.html" as wtf %}
+
 {% block head %}
 
 <title>Concert Booker - {{event.name}}</title>
@@ -30,111 +32,33 @@
             <div class="give-me-space">
               <div class="card">
                 <div class="card-header">
-                  <h4>DATES AND LOCATIONS</h4>
+                  <h4>LOCATION</h4>
                 </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="2">Australia</th>
-                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                          data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                          &#9660;</button></th>
-                    </tr>
-                  </thead>
-                  <tbody class="collapse show" id="collapse1">
-                    <tr>
-                      <td>Jan 21, 2022</td>
-                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Jan 23, 2022</td>
-                      <td>NightQuarter - Helensvale, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Jan 26, 2022</td>
-                      <td>Harrup Park - South Mackay, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                  </tbody>
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="2">New Zealand</th>
-                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                          data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                          &#9660;</button></th>
-                    </tr>
-                  </thead>
-                  <tbody class="collapse show" id="collapse2">
-                    <tr>
-                      <td>Jan 30, 2022</td>
-                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Feb 4, 2022</td>
-                      <td>NightQuarter - Helensvale, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Feb 10, 2022</td>
-                      <td>Harrup Park - South Mackay, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                  </tbody>
-                  <thead>
-                    <tr>
-                      <th scope="col" colspan="2">Brazil</th>
-                      <th scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
-                          data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
-                          &#9660;</button></th>
-                    </tr>
-                  </thead>
-                  <tbody class="collapse show" id="collapse3">
-                    <tr>
-                      <td>Feb 17, 2022</td>
-                      <td>The The Fortitude Music Hall - Brisbane, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Feb 25, 2022</td>
-                      <td>NightQuarter - Helensvale, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                    <tr>
-                      <td>Mar 7, 2022</td>
-                      <td>Harrup Park - South Mackay, QLD</td>
-                      <td><button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                          data-bs-target="#bookingOffCanvas">Book Tickets</button></td>
-                    </tr>
-                  </tbody>
-                  <thead>
-
-                  </thead>
-                </table>
+                <p><strong>Location: </strong>{{event.location}}</p>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="give-me-space">
-              <img src="https://www.abc.net.au/cm/rimage/12583540-16x9-large.jpg?v=3" class="img-fluid">
-            </div>
-            <div class="give-me-space">
-              <img src="https://www.abc.net.au/cm/rimage/12583540-16x9-large.jpg?v=3" class="img-fluid">
+              <img src="{{event.image}}" class="img-fluid">
             </div>
           </div>
-
         </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="give-me-space">
+              <div class="card">
+                <div class="card-header">
+                  <h4>DATE & TIME</h4>
+                </div>
+                <p><strong>Date: </strong>{{event.date}}</p>
+                <p><strong>Start time: </strong>{{event.time}}</p>
+              </div>
+            </div>
+          </div>
 
         <div class="row">
           <div class="col-12">
@@ -142,36 +66,13 @@
               <div class="card-header">
                 <h4>OTHER INFORMATION</h4>
               </div>
-              <p><strong>Pricing:</strong> $84pp</p>
-              <p><strong>Status:</strong> Upcoming</p>
+              <p><strong>Pricing: $</strong>{{event.price}}</p>
+              <p><strong>Status:</strong> {{event.status}}</p>
               <div class="card-header">
                 <h4>ABOUT EVENT</h4>
               </div>
-              <h6><strong>{{event.description}}</strong></h6>
-              <p>In what is a truly national tour, the three-time ARIA-award winning group will take their electric
-                energy and unmatchable flow to audiences in every Australian state and territory throughout January to
-                April 2022.</p>
-
-              <p>Due to commence in September but unfortunately with current COVID-19 restrictions and border closures
-                across Australia, the 2021 ‘Send It Tour’ will be cancelled and all tickets transferred across to the
-                2022 ‘The Sun Tour’ dates. Ticket holders will be contacted directly by ticketing agencies and fans
-                are
-                urged to #keepyourtickets.</p>
-
-              <p>The group will be touring in support of their polychromatic seventh studio album The Sun, out
-                tomorrow
-                via Flight Deck/Mushroom. Bliss n Eso have long juxtaposed light and dark, blissful and melancholy,
-                and
-                strong and vulnerable. Nonetheless, The Sun finds hope in somber experiences, heightening the album’s
-                sense of release. As a group that has grown up through their music over many years, The Sun initiates
-                a
-                new cycle and provides solace in this age of disquiet, thematising contemplation, healing and
-                fortitude.
-              </p>
-
-              <p>Renowned for their captivating live performances and boisterous energy – don't miss out on tickets to
-                see Australia’s finest, Bliss n Eso perform nationally for the first time in over four years, next
-                January - April 2022.</p>
+              
+              <p>{{event.description}}</p>
             </div>
           </div>
         </div>
@@ -188,23 +89,13 @@
                   <div class="col-12">
                     <div class="card shadow-0 border" style="background-color: #f0f2f5;">
                       <div class="card-body p-4">
-                        <div class="form-outline mb-4">
-                          <div class="row">
-                            <div class="col-8 col-md-10">
-                              <input type="text" class="form-control" placeholder="Type comment..." />
-                            </div>
-                            <div class="col-2 col-md-1">
-                              <button type="button" class="btn btn-secondary">Post</button>
-                            </div>
-                          </div>
-                        </div>
+                        {{wtf.quick_form(form,"/events/{0}/comment".format(event.id))}}
                         {% for comment in event.comments %}
                         <div class="card mb-4">
                           <div class="card-body">
                             <div class="row">
                               <div class="col-3 col-md-2">
-                                <img src="img/userImg.png" width="50" height="50" />
-                                <p><strong>{{comment.user}}</strong></p>
+                                <p><strong>{{comment.user_name}}</strong></p>
                               </div>
                               <div class="col-7 col-md-10">
                                 <p>{{comment.text}}</p>
