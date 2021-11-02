@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import Event, Comment
 from .forms import EventForm, CommentForm
 from . import db
@@ -40,38 +40,58 @@ def create():
         db.session.add(event)
         # Commit to the database
         db.session.commit()
-        print('Successfully created new event')
+        flash(f'Successfully created new event!', 'success')
         # Always redirect if the form is valid
         return redirect(url_for('main.index'))
     return render_template('events/event_create.html', form=form)
 
 
-@bp.route('/edit', methods =['GET', 'POST'])
+@bp.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit():
+def edit(id):
+    event_to_edit = Event.query.get(id)
     form = EventForm()
+
     if form.validate_on_submit():
-            # Call the function that checks and returns image
-            db_file_path=check_upload_file(form)
-            event = Event(name=form.name.data, 
-                    description=form.description.data, 
-                    price=form.price.data, 
-                    date=form.date.data, 
-                    time=form.time.data, 
-                    location=form.location.data,
-                    num_tickets=form.num_tickets.data,
-                    genre=form.genre.data,
-                    status=form.status.data,
-                    image=db_file_path)
-                
-            # Add the object to the database session
-            db.session.add(event)
-            # Commit to the database
-            db.session.commit()
-            print('Successfully edited your event')
-            # Always redirect if the form is valid
-            return redirect(url_for('main.index'))
-                     
+        creator = current_user.id 
+        # Call the function that checks and returns image
+        db_file_path=check_upload_file(form)
+        event_to_edit.name=form.name.data
+        db.session.commit() 
+        event_to_edit.description=form.description.data
+        db.session.commit() 
+        event_to_edit.price=form.price.data
+        db.session.commit()
+        event_to_edit.date=form.date.data
+        db.session.commit() 
+        event_to_edit.time=form.time.data
+        db.session.commit() 
+        event_to_edit.location=form.location.data
+        db.session.commit()
+        event_to_edit.num_tickets=form.num_tickets.data
+        db.session.commit()
+        event_to_edit.genre=form.genre.data
+        db.session.commit()
+        event_to_edit.status=form.status.data
+        db.session.commit()
+        event_to_edit.image=db_file_path
+        db.session.commit()
+        
+        flash(f'Successfully edited {event_to_edit.name}!', 'success')
+        # Always redirect if the form is valid
+        return redirect(url_for('main.myevents'))
+
+    form.name.data = event_to_edit.name
+    form.description.data = event_to_edit.description
+    form.price.data = event_to_edit.price
+    form.date.data = event_to_edit.date
+    form.time.data = event_to_edit.time
+    form.location.data = event_to_edit.location
+    form.num_tickets.data = event_to_edit.num_tickets
+    form.genre.data = event_to_edit.genre
+    form.status.data = event_to_edit.status
+    form.image.data = event_to_edit.image
+
     return render_template('events/event_edit.html', form=form)
 
 @bp.route('/delete/<id>')
@@ -79,6 +99,7 @@ def delete(id):
     event = Event.query.get(id)
     db.session.delete(event)
     db.session.commit()
+    flash(f'Successfully deleted!', 'success')
     return redirect(url_for('main.myevents'))
 
 
@@ -112,9 +133,7 @@ def comment(event):
       db.session.add(comment) 
       db.session.commit() 
 
-      #flashing a message which needs to be handled by the html
-      #flash('Your comment has been added', 'success')  
-      print('Your comment has been added') 
+      flash('Your comment has been added', 'success') 
     # using redirect sends a GET request to destination.show
     return redirect(url_for('events.show', id=event))
 

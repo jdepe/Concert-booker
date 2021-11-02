@@ -85,7 +85,7 @@
             <div class="card-footer">
                 <div class="d-grid gap-2 d-flex justify-content-center">
                 <a class="btn btn-secondary" href="{{url_for('events.show', id=event.id)}}" role="button">View</a>
-                <a class="btn btn-secondary" href="{{ url_for('events.edit')}}" role="button">Edit</a>
+                <a class="btn btn-secondary" href="{{ url_for('events.edit', id=event.id)}}" role="button">Edit</a>
                 <a class="btn btn-secondary" href="{{ url_for('events.delete', id=event.id)}}" role="button">Delete</a>
               </div>
             </div>
@@ -177,9 +177,9 @@
               </div>
               <div class="card-footer">
                   <div class="d-grid gap-2 d-flex justify-content-center">
-                  <a class="btn btn-secondary" href="{{url_for('events.show', id=event.id)}}" role="button">View</a>
-                  <a class="btn btn-secondary" href="{{ url_for('events.edit')}}" role="button">Edit</a>
-                  <a class="btn btn-secondary" href="{{ url_for('events.edit')}}" role="button">Delete</a>
+                    <a class="btn btn-secondary" href="{{url_for('events.show', id=event.id)}}" role="button">View</a>
+                    <a class="btn btn-secondary" href="{{ url_for('events.edit', id=event.id)}}" role="button">Edit</a>
+                    <a class="btn btn-secondary" href="{{ url_for('events.delete', id=event.id)}}" role="button">Delete</a>
                 </div>
               </div>
             </div>
