@@ -13,8 +13,10 @@ def show(id):
     event = Event.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()
+    # create the booking form
+    bform = BookingForm()
     # The template to be rendered
-    return render_template('events/event_details.html', event=event, form=cform)
+    return render_template('events/event_details.html', event=event, form=cform, form1=bform)
 
 @bp.route('/create', methods =['GET', 'POST'])
 @login_required
@@ -142,19 +144,20 @@ def book(event):
     bookform = BookingForm()
     if bookform.validate_on_submit():
         qty = bookform.qty.data
-        price = event.price * qty
+        price = bookform.qty.data
         if qty > event.num_tickets:
             flash(f'There arent enough tickets avaliable!', 'warning')
         elif qty == event.num_tickets: 
             event.status = 'booked'
-            booking = Booking(qty, price)
+            booking = Booking(qty=qty, price=price)
             db.session.add(booking)
             db.session.commit()
             flash('Your tickets have been booked', 'success')  
         else:
-            booking = Booking(qty, price)
+            booking = Booking(qty=qty, price=price)
             db.session.add(booking)
             db.session.commit()
             flash('Your tickets have been booked', 'success') 
     return redirect(url_for('events.show', id=event))
+    
 
