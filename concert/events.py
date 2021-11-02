@@ -150,11 +150,13 @@ def book(event):
         elif qty == event.num_tickets: 
             event.status = 'booked'
             booking = Booking(qty=qty, price=price)
+            event.num_tickets -= qty
             db.session.add(booking)
             db.session.commit()
             flash('Your tickets have been booked', 'success')  
         else:
             booking = Booking(qty=qty, price=price)
+            event.num_tickets -= qty
             db.session.add(booking)
             db.session.commit()
             flash('Your tickets have been booked', 'success') 
