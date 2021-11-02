@@ -31,8 +31,8 @@ class Event(db.Model):
     time = db.Column(db.Time)
     location = db.Column(db.String(400))
     image = db.Column(db.String(400))
-    price = db.Column(db.String)
-    num_tickets = db.Column(db.String)
+    price = db.Column(db.Integer)
+    num_tickets = db.Column(db.Integer)
     genre = db.Column(db.String(80))
     status = db.Column(db.String(80))
 
