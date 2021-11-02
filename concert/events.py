@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .models import Event, Comment
-from .forms import EventForm, CommentForm
+from .models import Event, Comment, Booking
+from .forms import BookingForm, EventForm, CommentForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -137,5 +137,24 @@ def comment(event):
     # using redirect sends a GET request to destination.show
     return redirect(url_for('events.show', id=event))
 
-
+@bp.route('/<event>/book', methods=['POST','GET'])
+def book(event):
+    bookform = BookingForm()
+    if bookform.validate_on_submit():
+        qty = bookform.qty.data
+        price = event.price * qty
+        if qty > event.num_tickets:
+            flash(f'There arent enough tickets avaliable!', 'warning')
+        elif qty == event.num_tickets: 
+            event.status = 'booked'
+            booking = Booking(qty, price)
+            db.session.add(booking)
+            db.session.commit()
+            flash('Your tickets have been booked', 'success')  
+        else:
+            booking = Booking(qty, price)
+            db.session.add(booking)
+            db.session.commit()
+            flash('Your tickets have been booked', 'success') 
+    return redirect(url_for('events.show', id=event))
 
