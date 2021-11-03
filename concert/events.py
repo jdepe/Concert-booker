@@ -148,11 +148,26 @@ def book(event):
     form = BookingForm()
     if form.validate_on_submit():
         qty = form.qty.data
-        price = qty * 5
-        booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)
-        db.session.add(booking)
-        db.session.commit()
-        return redirect(url_for('main.mybookings'))
+        price = event_to_book.price
+
+        if qty > event_to_book.num_tickets:
+            flash(f'There are only {event_to_book.num_tickets} avaliable.', 'warning')
+            return redirect(url_for('events.show', id=event))
+
+        elif qty == event_to_book.num_tickets:
+            event_to_book.num_tickets = event_to_book.num_tickets - qty
+            booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)
+            event_to_book.status = 'booked' 
+            db.session.add(booking)
+            db.session.commit() 
+            return redirect(url_for('main.mybookings'))   
+        else:
+            event_to_book.num_tickets = event_to_book.num_tickets - qty
+            booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)             
+            db.session.add(booking)
+            db.session.commit() 
+            return redirect(url_for('main.mybookings'))   
+            
     return redirect(url_for('events.show', id=event))
     
 

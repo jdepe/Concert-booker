@@ -20,8 +20,11 @@
 
     <div class="container" id="padded-container">
         <div class="shadow p-3 mb-5 bg-body rounded">
+          {% for bookings in booking %}
+          {% if current_user.id == bookings.user_id %}
           {% for event in events %}
-          {% if current_user.id == event.creator_id %}
+          {% if event.id == bookings.event_id %}
+
           <div class="give-me-space">
             <div class="card">
   
@@ -64,7 +67,7 @@
                       <p class="card-text"><strong>Ticket Price:</strong></p>
                     </div>
                     <div class="col">
-                      <p class="card-text">${{event.price}}</p>
+                      <p class="card-text">${{bookings.price}}</p>
                     </div>
                   </div>
   
@@ -73,10 +76,31 @@
                       <p class="card-text"><strong>Total Tickets:</strong></p>
                     </div>
                     <div class="col">
-                      <p class="card-text">{{event.num_tickets}}</p>
+                      <p class="card-text">{{bookings.qty}}</p>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <p class="card-text"><strong>Total Cost:</strong></p>
+                    </div>
+                    <div class="col">
+                      <p class="card-text">{{bookings.qty * bookings.price}}</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <p class="card-text"><strong>Booking Number:</strong></p>
+                    </div>
+                    <div class="col">
+                      <p class="card-text">{{bookings.id}}{{current_user.id}}{{event.id}}</p>
+                    </div>
+                  </div>
+
                 </div>
+
+
   
                 <!-- IMAGE COLUMN -->
                 <div class="col-12 col-md-3 align-self-center">
@@ -86,13 +110,13 @@
               </div>
               <div class="card-footer">
                   <div class="d-grid gap-2 d-flex justify-content-center">
-                    <a class="btn btn-secondary" href="{{url_for('events.show', id=event.id)}}" role="button">View</a>
-                    <a class="btn btn-secondary" href="{{ url_for('events.edit', id=event.id)}}" role="button">Edit</a>
-                    <a class="btn btn-secondary" href="{{ url_for('events.delete', id=event.id)}}" role="button">Delete</a>
+
                 </div>
               </div>
             </div>
           </div>
+          {% endif %}
+          {% endfor %}
           {% endif %}
           {% endfor %}
   

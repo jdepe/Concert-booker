@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .models import Event
+from .models import Event, Booking
 
 mainbp = Blueprint('main', __name__)
 
@@ -47,8 +47,11 @@ def hiphop():
     
 @mainbp.route('/my_bookings')
 def mybookings():
-    events = Event.query.all()  
-    return render_template('mybookings.html', events=events)
+    events = Event.query.all() 
+    bookings = Booking.query.all() 
+    print(bookings)
+    print(events)
+    return render_template('mybookings.html', events=events, booking=bookings)
 
 @mainbp.route('/search')
 def search():
