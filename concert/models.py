@@ -70,8 +70,9 @@ class Booking(db.Model):
     price = db.Column(db.Integer)
     date = db.Column(db.DateTime, default=datetime.now())
     
-    # Create the foreign key to link the user to the booking
+    # Create the foreign key to link the user and event to the booking
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
    
 

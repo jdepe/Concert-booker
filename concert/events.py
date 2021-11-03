@@ -121,47 +121,37 @@ def check_upload_file(form):
     return db_upload_path
 
 
-@bp.route('/<event>/comment', methods = ['GET', 'POST'])
-@login_required  
+@bp.route('/<event>/comment', methods = ['GET', 'POST'])  
+@login_required
 def comment(event):  
     form = CommentForm()  
     #get the destination object associated to the page and the comment
     event_obj = Event.query.filter_by(id=event).first()  
     if form.validate_on_submit():  
-        #read the comment from the form
-        comment = Comment(text=form.text.data,  
-                            event=event_obj,
-                            user=current_user) 
-        #here the back-referencing works - comment.destination is set
-        # and the link is created
-        db.session.add(comment) 
-        db.session.commit() 
+      #read the comment from the form
+      comment = Comment(text=form.text.data,  
+                        event=event_obj,
+                        user=current_user) 
+      #here the back-referencing works - comment.destination is set
+      # and the link is created
+      db.session.add(comment) 
+      db.session.commit() 
 
-        flash('Your comment has been added', 'success') 
+      flash('Your comment has been added', 'success') 
     # using redirect sends a GET request to events.show
     return redirect(url_for('events.show', id=event))
 
 @bp.route('/<event>/book', methods=['POST','GET'])
 @login_required
 def book(event):
-    bookform = BookingForm()
-    if bookform.validate_on_submit():
-        qty = bookform.qty.data
-        price = bookform.qty.data
-        if qty > event.num_tickets:
-            flash(f'There arent enough tickets avaliable!', 'warning')
-        elif qty == event.num_tickets: 
-            event.status = 'booked'
-            booking = Booking(qty=qty, price=price)
-            event.num_tickets -= qty
-            db.session.add(booking)
-            db.session.commit()
-            flash('Your tickets have been booked', 'success')  
-        else:
-            booking = Booking(qty=qty, price=price)
-            event.num_tickets -= qty
-            db.session.add(booking)
-            db.session.commit()
-            flash('Your tickets have been booked', 'success') 
+    event_to_book = Event.query.get(event)  
+    form = BookingForm()
+    if form.validate_on_submit():
+        qty = form.qty.data
+        price = qty * 5
+        booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)
+        db.session.add(booking)
+        db.session.commit()
     return redirect(url_for('events.show', id=event))
     
+
