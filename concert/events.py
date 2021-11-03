@@ -165,4 +165,3 @@ def book(event):
             flash('Your tickets have been booked', 'success') 
     return redirect(url_for('events.show', id=event))
     
-

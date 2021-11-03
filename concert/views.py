@@ -21,3 +21,4 @@ def search():
         return render_template('index.html', events=events)
     # if nothing has been searched
     return redirect(url_for('main.index'))
+
