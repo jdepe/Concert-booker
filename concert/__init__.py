@@ -23,7 +23,7 @@ def create_app():
     app=Flask(__name__)
 
     bootstrap = Bootstrap(app)
- 
+    
     # create a secret key for the sesion object
     app.secret_key = 'secretkey'
 

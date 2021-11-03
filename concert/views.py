@@ -49,8 +49,6 @@ def hiphop():
 def mybookings():
     events = Event.query.all() 
     bookings = Booking.query.all() 
-    print(bookings)
-    print(events)
     return render_template('mybookings.html', events=events, booking=bookings)
 
 @mainbp.route('/search')
@@ -60,5 +58,12 @@ def search():
         events = Event.query.filter(Event.description.like(queryString)).all()
         return render_template('index.html', events=events)
     # if nothing has been searched
-    return redirect(url_for('main.index'))
+
+    if request.args['search']:
+        print(request.args['search'])
+        ev = "%" + request.args['search'] + '%'
+        events = Event.query.filter(Event.description.like(ev)).all()
+        return render_template('index.html', events=events)
+    else:
+        return redirect(url_for('main.index'))
 

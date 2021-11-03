@@ -62,8 +62,8 @@
                                 <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a>
                             {% endif %}
                         </ul>
-                        <form class="d-flex p-3">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex p-3" action="{{url_for('main.search')}}">
+                            <input class="form-control me-2" type="text" name="search" placeholder="Search" id="SearchForm">
                             <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
                     </div>

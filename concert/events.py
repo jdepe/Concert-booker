@@ -160,14 +160,16 @@ def book(event):
             event_to_book.status = 'booked' 
             db.session.add(booking)
             db.session.commit() 
+            flash(f'Booking Confirmed.', 'success')
             return redirect(url_for('main.mybookings'))   
         else:
             event_to_book.num_tickets = event_to_book.num_tickets - qty
             booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)             
             db.session.add(booking)
             db.session.commit() 
+            flash(f'Booking Confirmed.', 'success')
             return redirect(url_for('main.mybookings'))   
-            
+
     return redirect(url_for('events.show', id=event))
     
 
