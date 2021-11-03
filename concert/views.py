@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import Event
 
 mainbp = Blueprint('main', __name__)
@@ -12,6 +12,38 @@ def index():
 def myevents():
     events = Event.query.all()  
     return render_template('myevents.html', events=events)
+
+@mainbp.route('/rock')
+def rock():
+    events = Event.query.filter_by(genre='rock').all()  
+    if events == []:
+        flash(f'No events of that genre exist', 'warning')
+        return redirect(url_for('main.index')) 
+    return render_template('rock.html', events=events)
+
+@mainbp.route('/pop')
+def pop():
+    events = Event.query.filter_by(genre='pop').all()  
+    if events == []:
+        flash(f'No events of that genre exist', 'warning')
+        return redirect(url_for('main.index')) 
+    return render_template('pop.html', events=events)
+
+@mainbp.route('/electronic')
+def electronic():
+    events = Event.query.filter_by(genre='electronic').all()  
+    if events == []:
+        flash(f'No events of that genre exist', 'warning')
+        return redirect(url_for('main.index')) 
+    return render_template('electronic.html', events=events)
+
+@mainbp.route('/hiphop')
+def hiphop():
+    events = Event.query.filter_by(genre='hip hop').all()  
+    if events == []:
+        flash(f'No events of that genre exist', 'warning')
+        return redirect(url_for('main.index')) 
+    return render_template('hiphop.html', events=events)
 
 @mainbp.route('/search')
 def search():
