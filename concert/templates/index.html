@@ -11,42 +11,29 @@
   <div class="class=" carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="img-gradient">
-        <img src="static\image\featured.jpg" class="w-100">
+        <img src="static\image\mainbackground.jpg" class="w-100">
       </div>
       <div class="carousel-caption" id="carousel-main">
         <div class="col-6 align-self-start">
-          <h6>UPCOMING</h6>
-          <h1>BLISS N ESO</h1>
-          <div class="d-none d-lg-block">
-            <p class="lead">One of the country’s finest hip hop acts, Bliss n Eso are
-              excited to announce a 29-date
-              metro
-              and regional Australian tour.</p>
+          <div class="row text-center">
+            <div class="col">
+              <a href="{{url_for('main.rock')}}" class="link-secondary"><h2>Rock</h2></a>
+            </div>
+            <div class="col">
+              <a href="{{url_for('main.pop')}}" class="link-secondary"><h2>Pop</h2></a>
+            </div>
+            <div class="col">
+              <a href="{{url_for('main.electronic')}}" class="link-secondary"><h2>Electronic</h2></a>
+            </div>
+            <div class="col">
+              <a href="{{url_for('main.hiphop')}}" class="link-secondary"><h2>Hip Hop</h2></a>
+            </div>
           </div>
-          <a class="btn btn-primary" href="event_details.html" role="button">Find Tickets</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="shadow p-3 mb-5 bg-body rounded">
-    <div class="row text-center">
-      <div class="col">
-      <a href="{{url_for('main.rock')}}"><h2>Rock</h2></a>
-      </div>
-      <div class="col">
-      <a href="{{url_for('main.pop')}}"><h2>Pop</h2></a>
-      </div>
-      <div class="col">
-      <a href="{{url_for('main.electronic')}}"><h2>Electronic</h2></a>
-      </div>
-      <div class="col">
-      <a href="{{url_for('main.hiphop')}}"><h2>Hip Hop</h2></a>
-      </div>
-    </div>
-  </div>
 
 </div>
 {% endblock %}
@@ -88,9 +75,9 @@
       <div class="row row-cols-1 row-cols-md-2">
         <!-- COL 1 -->
         {% for event in events %}
-        <div class="give-me-space">
+        <!-- <div class="give-me-space">
           <div class="col">
-            <a class="card bg-dark text-white" href="{{url_for('events.show', id=event.id)}}">
+            <a class="card h-50 bg-dark text-white font-weight-bold"  href="{{url_for('events.show', id=event.id)}}">
               <img src="{{event.image}}" class="card-img">
               <div class="card-img-overlay">
                 <h5 class="card-title">{{event.title}}</h5>
@@ -99,6 +86,14 @@
               </div>
             </a>
           </div>
+        </div> -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{event.title}}</h5>
+            <p class="card-text">{{event.description}}</p>
+            <p class="card-text"><small class="text-muted">{{event.status}}</small></p>
+          </div>
+          <img class="card-img-bottom" style="height: 25rem; width: 35rem;" src="{{event.image}}" alt="Card image cap">
         </div>
         {% endfor %}
 
