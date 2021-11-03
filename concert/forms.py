@@ -50,6 +50,5 @@ class CommentForm(FlaskForm):
 
 class BookingForm(FlaskForm):
   qty = IntegerField('How many tickets to purchase', [InputRequired()])
-  cost = IntegerField('Ticket Cost',validators=[InputRequired()])
   confirm = SubmitField('Confirm')
 

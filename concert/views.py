@@ -44,6 +44,11 @@ def hiphop():
         flash(f'No events of that genre exist', 'warning')
         return redirect(url_for('main.index')) 
     return render_template('hiphop.html', events=events)
+    
+@mainbp.route('/my_bookings')
+def mybookings():
+    events = Event.query.all()  
+    return render_template('mybookings.html', events=events)
 
 @mainbp.route('/search')
 def search():
