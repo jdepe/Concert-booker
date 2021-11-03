@@ -12,15 +12,13 @@ ALLOWED_FILES = {'PNG','JPG','png','jpg','JPEG','jpeg'}
 
 # The event creation form
 class EventForm(FlaskForm):
-  name = StringField('Event Name', validators=[InputRequired()])
-  # adding two validators, one to ensure input is entered and other to check if the 
-  #description meets the length requirements
+  name = StringField('Event Name', validators=[InputRequired(), Length(max=80, message="Maximum characters reached (80)")])
   description = TextAreaField('Description', validators=[InputRequired(), Length(max=500, message="Maximum characters reached (500)")])
   price = IntegerField('Price', validators=[InputRequired()])
   date = DateField('Event Date', validators=[InputRequired()], format='%Y-%m-%d')
   time = TimeField('Event Start Time', validators=[InputRequired()], format='%H:%M')
   location = StringField('Event Location', validators=[InputRequired()])
-  num_tickets = StringField('Total tickets', validators=[InputRequired()])
+  num_tickets = IntegerField('Total tickets', validators=[InputRequired()])
   genre = SelectField(u'Genre', choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('hip hop', 'Hip Hop')])
   status = SelectField(u'Event Status', choices=[('upcoming', 'Upcoming'), ('inactive', 'Inactive'), ('booked', 'Booked'), ('cancelled', 'Cancelled')])
   image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
@@ -36,7 +34,8 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     user_name=StringField("User Name", validators=[InputRequired()])
     email_id = EmailField("Email Address", validators=[InputRequired()])
-    
+    phone = StringField("Phone Number")
+    address = StringField("Street Address")
     # Linking password and confirm fields to ensure the data is equal
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
@@ -50,6 +49,6 @@ class CommentForm(FlaskForm):
 
 class BookingForm(FlaskForm):
   qty = IntegerField('How many tickets to purchase', [InputRequired()])
-  cost = IntegerField('Total Cost', validators=[InputRequired()])
+  cost = IntegerField('Total Cost', render_kw={'readonly':True},validators=[InputRequired()])
   confirm = SubmitField('Confirm')
   

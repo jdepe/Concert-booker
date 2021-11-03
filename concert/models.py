@@ -8,6 +8,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     email_id = db.Column(db.String(100), index=True, nullable=False)
+    phone = db.Column(db.String(100))
+    address = db.Column(db.String(100))
 
     # Create the password_hash so that passwords aren't stored directly in the DB.
     password_hash = db.Column(db.String(255), nullable=False)
@@ -25,22 +27,21 @@ class User(db.Model, UserMixin):
 class Event(db.Model):
     __tablename__='event'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), )
-    description = db.Column(db.String(500))
-    date = db.Column(db.Date)
-    time = db.Column(db.Time)
-    location = db.Column(db.String(400))
-    image = db.Column(db.String(400))
-    price = db.Column(db.Integer)
-    num_tickets = db.Column(db.Integer)
-    genre = db.Column(db.String(80))
-    status = db.Column(db.String(80))
+    name = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    time = db.Column(db.Time, nullable=False)
+    location = db.Column(db.String(400), nullable=False)
+    image = db.Column(db.String(400), nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    num_tickets = db.Column(db.Integer, nullable=False)
+    genre = db.Column(db.String(80), nullable=False)
+    status = db.Column(db.String(80), nullable=False)
 
     # Create the foreign key to link users (refer to the primary key of the user)
     creator_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    # Create the Comment db.relationship
-	# relation to call event.comment and comment.event
+    # Create the one to many relationship between event and comment
     comments = db.relationship('Comment', backref='event')
 
     def __repr__(self): #string print method
@@ -53,8 +54,9 @@ class Comment(db.Model):
     text = db.Column(db.String(400))
     created_at = db.Column(db.DateTime, default=datetime.now())
     
-    # add the foreign keys for user.name and event.id
+    # Create the foreign key to link users (refer to the user.name)
     user_name = db.Column(db.String, db.ForeignKey('user.name'))
+    # Create the foreign key to link events (refer to the primary key of the event)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
     def __repr__(self):

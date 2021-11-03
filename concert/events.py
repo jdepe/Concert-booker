@@ -97,6 +97,7 @@ def edit(id):
     return render_template('events/event_edit.html', form=form)
 
 @bp.route('/delete/<id>')
+@login_required
 def delete(id):
     event = Event.query.get(id)
     db.session.delete(event)
@@ -120,26 +121,28 @@ def check_upload_file(form):
     return db_upload_path
 
 
-@bp.route('/<event>/comment', methods = ['GET', 'POST'])  
+@bp.route('/<event>/comment', methods = ['GET', 'POST'])
+@login_required  
 def comment(event):  
     form = CommentForm()  
     #get the destination object associated to the page and the comment
     event_obj = Event.query.filter_by(id=event).first()  
     if form.validate_on_submit():  
-      #read the comment from the form
-      comment = Comment(text=form.text.data,  
-                        event=event_obj,
-                        user=current_user) 
-      #here the back-referencing works - comment.destination is set
-      # and the link is created
-      db.session.add(comment) 
-      db.session.commit() 
+        #read the comment from the form
+        comment = Comment(text=form.text.data,  
+                            event=event_obj,
+                            user=current_user) 
+        #here the back-referencing works - comment.destination is set
+        # and the link is created
+        db.session.add(comment) 
+        db.session.commit() 
 
-      flash('Your comment has been added', 'success') 
-    # using redirect sends a GET request to destination.show
+        flash('Your comment has been added', 'success') 
+    # using redirect sends a GET request to events.show
     return redirect(url_for('events.show', id=event))
 
 @bp.route('/<event>/book', methods=['POST','GET'])
+@login_required
 def book(event):
     bookform = BookingForm()
     if bookform.validate_on_submit():

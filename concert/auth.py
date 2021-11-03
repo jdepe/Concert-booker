@@ -33,18 +33,22 @@ def login():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        #get data from the form
+        # Get data from the form
         username = form.user_name.data
         email = form.email_id.data
         password = form.password.data
-           
-        #check if a user exists
+        address = form.address.data
+        phone = form.phone.data 
+
+        # Check if a user exists
         check_user = User.query.filter_by(name=username).first()
         if check_user is None:
             # There is not a user - we are ok to create
             new_user = User(
                 name=username,
                 email_id=email, 
+                address = address,
+                phone = phone, 
                 password_hash=generate_password_hash(password) 
             )
             
