@@ -13,14 +13,9 @@
 
 <main>
   <!-- TOP IMAGE -->
-  <div class="container-fluid">
-    <div class="carousel">
-      <div class="img-gradient">
-        <img src="{{event.image}}" class="d-block w-100">
-      </div>
-      <div class="carousel-caption">
-        <h1>{{event.name}}</h1>
-      </div>
+  <div class="container">
+    <div class="shadow p-3 bg-body rounded text-center">
+      <h1>{{event.name}}</h1>
     </div>
   </div>
 
@@ -58,6 +53,7 @@
               </div>
               <p><strong>Pricing: $</strong>{{event.price}}</p>
               <p><strong>Status:</strong> {{event.status}}</p>
+              <p><strong>Genre:</strong> {{event.genre}}</p>
             </div>
           </div>
 
@@ -65,10 +61,11 @@
 
         <div class="col-lg-6">
           <div class="give-me-space">
-            <img src="{{event.image}}" class="img-fluid">
+            <img src="{{event.image}}" class="rounded mx-auto d-block">
           </div>
           <div class="give-me-space">
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#cardmodal">Book tickets</button>
+            <button class="btn btn-primary mx-auto d-block" type="button" data-bs-toggle="modal" data-bs-target="#cardmodal">Book
+              tickets</button>
           </div>
         </div>
       </div>

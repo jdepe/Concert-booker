@@ -9,6 +9,7 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 # allowed files
 ALLOWED_FILES = {'PNG','JPG','png','jpg','JPEG','jpeg'}
+choices = [('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('hip hop', 'Hip Hop')]
 
 # The event creation form
 class EventForm(FlaskForm):
@@ -19,7 +20,7 @@ class EventForm(FlaskForm):
   time = TimeField('Event Start Time', validators=[InputRequired()], format='%H:%M')
   location = StringField('Event Location', validators=[InputRequired()])
   num_tickets = IntegerField('Total tickets', validators=[InputRequired()])
-  genre = SelectField(u'Genre', choices=[('rock', 'Rock'), ('pop', 'Pop'), ('electronic', 'Electronic'), ('hip hop', 'Hip Hop')])
+  genre = SelectField(u'Genre', choices=choices)
   status = SelectField(u'Event Status', choices=[('upcoming', 'Upcoming'), ('inactive', 'Inactive'), ('booked', 'Booked'), ('cancelled', 'Cancelled')])
   image = FileField('Cover Image', validators=[FileRequired(), FileAllowed(ALLOWED_FILES, message=f'Accepted file types: {ALLOWED_FILES}')])
   submit = SubmitField("Create")
@@ -49,6 +50,6 @@ class CommentForm(FlaskForm):
 
 class BookingForm(FlaskForm):
   qty = IntegerField('How many tickets to purchase', [InputRequired()])
-  cost = IntegerField('Ticket Cost', render_kw={'readonly':True},validators=[InputRequired()])
+  cost = IntegerField('Ticket Cost',validators=[InputRequired()])
   confirm = SubmitField('Confirm')
-  
+

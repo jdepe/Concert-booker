@@ -6,35 +6,48 @@
 {% endblock %}
 
 {% block header %}
-  <!-- TOP IMAGE -->
-  <div class="container-fluid">
-    <div class="class=" carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="img-gradient">
-          <img src="static\image\featured.jpg" class="w-100">
-        </div>
-        <div class="carousel-caption" id="carousel-main">
-          <div class="col-6 align-self-start">
-            <h6>UPCOMING</h6>
-            <h1>BLISS N ESO</h1>
-            <div class="d-none d-lg-block">
-              <p class="lead">One of the country’s finest hip hop acts, Bliss n Eso are
-                excited to announce a 29-date
-                metro
-                and regional Australian tour.</p>
-            </div>
-            <a class="btn btn-primary" href="event_details.html" role="button">Find Tickets</a>
+<!-- TOP IMAGE -->
+<div class="container-fluid">
+  <div class="class=" carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="img-gradient">
+        <img src="static\image\featured.jpg" class="w-100">
+      </div>
+      <div class="carousel-caption" id="carousel-main">
+        <div class="col-6 align-self-start">
+          <h6>UPCOMING</h6>
+          <h1>BLISS N ESO</h1>
+          <div class="d-none d-lg-block">
+            <p class="lead">One of the country’s finest hip hop acts, Bliss n Eso are
+              excited to announce a 29-date
+              metro
+              and regional Australian tour.</p>
           </div>
+          <a class="btn btn-primary" href="event_details.html" role="button">Find Tickets</a>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="shadow p-3 mb-5 bg-body rounded">
+    <h1 class="sectionTitle"><u class="sectionTitle">Popular Concerts</u></h1>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 align-items-center">
+      <a href="{{url_for('events.show', id=1)}}">Rock</a>
+      <a href="{{url_for('events.show', id=1)}}">Pop</a>
+      <a href="{{url_for('events.show', id=1)}}">Electronic</a>
+      <a href="{{url_for('events.show', id=1)}}">Hip Hop</a>
+    </div>
+  </div>
+
+</div>
 {% endblock %}
 
 {% block content %}
-  <main>
-   
-    <!-- EVENT MODAL
+<main>
+
+  <!-- EVENT MODAL
     <div class="modal fade" id="cardmodal" tabindex="-1" aria-labelledby="concertCardLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 1000px">
         <div class="modal-content">
@@ -80,135 +93,60 @@
         </div>
       </div>
     </div> -->
-    <!-- POPULAR SECTION -->
-    <div class="container">
-      <div class="shadow p-3 mb-5 bg-body rounded">
-        <h1 class="sectionTitle"><u class="sectionTitle">Popular Concerts</u></h1>
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 align-items-center">
+  <!-- POPULAR SECTION -->
+  <div class="container">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+      <h1 class="sectionTitle"><u class="sectionTitle">Popular Concerts</u></h1>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 align-items-center">
 
-          {% for event in events %}
-          
-          <div class="col-sm d-flex h-100">
-              <a class="card text-black" id="smallPopular" href="{{url_for('events.show', id=event.id)}}">
-                <img src="{{event.image}}" class="card-img-fluid">
-                <div class="card-footer">
-                  <small class="text-muted">{{event.status}}</small>
-                  <h5 class="card-title">{{event.name}}</h5>
-                </div>
-              </a>
+        {% for event in events %}
+
+        <div class="col-sm d-flex h-100">
+          <a class="card text-black" id="smallPopular" href="{{url_for('events.show', id=event.id)}}">
+            <img src="{{event.image}}" class="card-img-fluid">
+            <div class="card-footer">
+              <small class="text-muted">{{event.status}}</small>
+              <h5 class="card-title">{{event.name}}</h5>
             </div>
-
-          
-          {% endfor %}
-
-
+          </a>
         </div>
-      </div>
 
-    </div>
-    <!-- NAV TABS -->
-    <div class="container">
-      <div class="shadow p-3 mb-5 bg-body rounded">
-        <h1 class="sectionTitle"><u class="sectionTitle">View by Genre</u></h1>
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-            <button class="nav-link active" id="genre1" data-bs-toggle="tab" data-bs-target="#genre1" type="button"
-              role="tab" aria-controls="genre1" aria-selected="true">Genre 1</button>
+        {% endfor %}
 
-            <button class="nav-link" id="genre2" data-bs-toggle="tab" data-bs-target="#genre2" type="button" role="tab"
-              aria-controls="genre2" aria-selected="false">Genre 2</button>
 
-            <button class="nav-link" id="genre3" data-bs-toggle="tab" data-bs-target="#genre3" type="button" role="tab"
-              aria-controls="genre3" aria-selected="false">Genre 3</button>
-
-            <button class="nav-link" id="genre4" data-bs-toggle="tab" data-bs-target="#genre4" type="button" role="tab"
-              aria-controls="genre4" aria-selected="false">Genre 4</button>
-
-          </div>
-        </nav>
-
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="genre1" role="tabpanel">
-            <!-- ROW 1 -->
-            <div class="row row-cols-1 row-cols-md-2">
-              <!-- COL 1 -->
-              <div class="give-me-space">
-                <div class="col">
-                  <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
-                    data-bs-target="#cardmodal">
-                    <img src="static\image\card.jpg" class="card-img">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
-                      <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
-                        announce
-                        a 29-date metro and regional Australian tour.</h6>
-                      <p class="card-text">Upcoming</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <!-- COL 2 -->
-              <div class="give-me-space">
-                <div class="col">
-                  <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
-                    data-bs-target="#cardmodal">
-                    <img src="static\image\card.jpg" class="card-img" alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
-                      <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
-                        announce
-                        a 29-date metro and regional Australian tour.</h6>
-                      <p class="card-text">Cancelled</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW 2 -->
-            <div class="row row-cols-1 row-cols-md-2">
-              <!-- COL 1 -->
-              <div class="give-me-space">
-                <div class="col">
-                  <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
-                    data-bs-target="#cardmodal">
-                    <img src="static\image\card.jpg" class="card-img">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
-                      <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
-                        announce
-                        a 29-date metro and regional Australian tour.</h6>
-                      <p class="card-text">Booked</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <!-- COL 2 -->
-              <div class="give-me-space">
-                <div class="col">
-                  <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal"
-                    data-bs-target="#cardmodal">
-                    <img src="static\image\card.jpg" class="card-img">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
-                      <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are excited to
-                        announce
-                        a 29-date metro and regional Australian tour.</h6>
-                      <p class="card-text">Upcoming</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="genre2" role="tabpanel"></div>
-          <div class="tab-pane fade" id="genre3" role="tabpanel"></div>
-          <div class="tab-pane fade" id="genre4" role="tabpanel"></div>
-        </div>
       </div>
     </div>
-  </main>
+
+  </div>
+  <!-- NAV TABS -->
+  <div class="container">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+      <h1 class="sectionTitle"><u class="sectionTitle">Discover</u></h1>
+
+      <!-- ROW 1 -->
+      <div class="row row-cols-1 row-cols-md-2">
+        <!-- COL 1 -->
+        {% for event in events %}
+        <div class="give-me-space">
+          <div class="col">
+            <a class="card bg-dark text-white" href="#cardmodal" data-bs-toggle="modal" data-bs-target="#cardmodal">
+              <img src="static\image\card.jpg" class="card-img">
+              <div class="card-img-overlay">
+                <h5 class="card-title">BLISS N ESO - THE SUN TOUR</h5>
+                <h6 class="card-text d-none d-lg-block">One of the country’s finest hip hop acts, Bliss n Eso are
+                  excited to
+                  announce
+                  a 29-date metro and regional Australian tour.</h6>
+                <p class="card-text">Upcoming</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+  </div>
+</main>
 {% endblock %}
