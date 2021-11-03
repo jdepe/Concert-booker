@@ -152,6 +152,7 @@ def book(event):
         booking = Booking(qty=qty, price=price, user_id=current_user.id, event_id=event_to_book.id)
         db.session.add(booking)
         db.session.commit()
+        return redirect(url_for('main.mybookings'))
     return redirect(url_for('events.show', id=event))
     
 

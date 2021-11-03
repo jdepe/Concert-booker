@@ -13,6 +13,11 @@ def myevents():
     events = Event.query.all()  
     return render_template('myevents.html', events=events)
 
+@mainbp.route('/my_bookings')
+def mybookings():
+    events = Event.query.all()  
+    return render_template('mybookings.html', events=events)
+
 @mainbp.route('/search')
 def search():
     if request.args['search'] is not "":
