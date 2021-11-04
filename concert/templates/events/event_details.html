@@ -32,7 +32,7 @@
               <div class="card-header">
                 <h4>LOCATION</h4>
               </div>
-              <p><strong>Location: </strong>{{event.location}}</p>
+              <p class="m-3"><strong>Location: </strong>{{event.location}}</p>
             </div>
           </div>
 
@@ -41,8 +41,8 @@
               <div class="card-header">
                 <h4>DATE & TIME</h4>
               </div>
-              <p><strong>Date: </strong>{{event.date}}</p>
-              <p><strong>Start time: </strong>{{event.time}}</p>
+              <p class="m-3"><strong>Date: </strong>{{event.date}}</p>
+              <p class="m-3"><strong>Start time: </strong>{{event.time}}</p>
             </div>
           </div>
 
@@ -51,9 +51,9 @@
               <div class="card-header">
                 <h4>OTHER INFORMATION</h4>
               </div>
-              <p><strong>Pricing: $</strong>{{event.price}}</p>
-              <p><strong>Status:</strong> {{event.status}}</p>
-              <p><strong>Genre:</strong> {{event.genre}}</p>
+              <p class="m-3"><strong>Pricing: $</strong>{{event.price}}</p>
+              <p class="m-3"><strong>Status:</strong> {{event.status}}</p>
+              <p class="m-3"><strong>Genre:</strong> {{event.genre}}</p>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
 
         <div class="col-lg-6">
           <div class="give-me-space">
-            <img src="{{event.image}}" class="rounded mx-auto d-block">
+            <img src="{{event.image}}" class="card-img-top img-fluid" id="cardTop2">
           </div>
           <div class="give-me-space">
             <button class="btn btn-primary mx-auto d-block" type="button" data-bs-toggle="modal" data-bs-target="#cardmodal">Book
@@ -77,7 +77,7 @@
             <div class="card-header">
               <h4>ABOUT EVENT</h4>
             </div>
-            <p>{{event.description}}</p>
+            <p class="m-3">{{event.description}}</p>
           </div>
         </div>
       </div>

@@ -28,6 +28,7 @@ def create_app():
     app.secret_key = 'secretkey'
 
     # configure and initialise DB
+    # SQLITE DB
     app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///concertdb.sqlite'
     db.init_app(app)
 

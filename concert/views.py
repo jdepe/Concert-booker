@@ -53,16 +53,22 @@ def mybookings():
 
 @mainbp.route('/search')
 def search():
-    if request.args['search'] is not "":
-        queryString = f"%{request.args['search']}%"
-        events = Event.query.filter(Event.description.like(queryString)).all()
-        return render_template('index.html', events=events)
+    # if request.args['search'] is not "":
+    #     queryString = f"%{request.args['search']}%"
+    #     events = Event.query.filter(Event.description.like(queryString)).all()
+    #     return render_template('index.html', events=events)
     # if nothing has been searched
 
     if request.args['search']:
         print(request.args['search'])
         ev = "%" + request.args['search'] + '%'
         events = Event.query.filter(Event.description.like(ev)).all()
+        if events == []:
+            events = Event.query.filter(Event.name.like(ev)).all()
+        if events == []:
+            events = Event.query.filter(Event.genre.like(ev)).all()
+        if events == []:
+            events = Event.query.filter(Event.location.like(ev)).all()
         return render_template('index.html', events=events)
     else:
         return redirect(url_for('main.index'))

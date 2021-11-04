@@ -32,53 +32,53 @@
               <div class="col-12 col-md-9 align-self-center">
                 <div class="row">
                   <div class="col">
-                    <p class="card-text"><strong>Location:</strong></p>
+                    <p class="m-1"><strong>Location:</strong></p>
                   </div>
                   <div class="col">
-                    <p class="card-text">{{event.location}}</p>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><strong>Date:</strong></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text">{{event.date}}</p>
+                    <p class="m-1">{{event.location}}</p>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col">
-                    <p class="card-text"><strong>Time:</strong></p>
+                    <p class="m-1"><strong>Date:</strong></p>
                   </div>
                   <div class="col">
-                    <p class="card-text">{{event.time}}</p>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text"><strong>Ticket Price:</strong></p>
-                  </div>
-                  <div class="col">
-                    <p class="card-text">${{event.price}}</p>
+                    <p class="m-1">{{event.date}}</p>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col">
-                    <p class="card-text"><strong>Total Tickets:</strong></p>
+                    <p class="m-1"><strong>Time:</strong></p>
                   </div>
                   <div class="col">
-                    <p class="card-text">{{event.num_tickets}}</p>
+                    <p class="m-1">{{event.time}}</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <p class="m-1"><strong>Ticket Price:</strong></p>
+                  </div>
+                  <div class="col">
+                    <p class="m-1">${{event.price}}</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <p class="m-1"><strong>Total Tickets:</strong></p>
+                  </div>
+                  <div class="col">
+                    <p class="m-1">{{event.num_tickets}}</p>
                   </div>
                 </div>
               </div>
 
               <!-- IMAGE COLUMN -->
               <div class="col-12 col-md-3 align-self-center">
-                <img src="{{event.image}}" class="img-thumbnail" id="historyThumbnail">
+                <img src="{{event.image}}" class="card-img-top img-thumbnail" id="cardTop2">
               </div>
 
             </div>
