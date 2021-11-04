@@ -75,7 +75,7 @@
       <div class="row row-cols-1 row-cols-md-2">
         <!-- COL 1 -->
         {% for event in events %}
-        <!-- <div class="give-me-space">
+        <div class="give-me-space">
           <div class="col">
             <a class="card h-50 bg-dark text-white font-weight-bold"  href="{{url_for('events.show', id=event.id)}}">
               <img src="{{event.image}}" class="card-img">
@@ -86,17 +86,10 @@
               </div>
             </a>
           </div>
-        </div> -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{event.title}}</h5>
-            <p class="card-text">{{event.description}}</p>
-            <p class="card-text"><small class="text-muted">{{event.status}}</small></p>
-          </div>
-          <img class="card-img-bottom" style="height: 25rem; width: 35rem;" src="{{event.image}}" alt="Card image cap">
         </div>
         {% endfor %}
-
+      </div>
+    
 
     </div>
   </div>
